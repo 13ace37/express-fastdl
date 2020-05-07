@@ -1,0 +1,25 @@
+{
+  "name": "express-fastdl",
+  "version": "1.0.0",
+  "description": "A Source FastDL hosted with expressjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/13ace37/express-fastdl.git"
+  },
+  "author": "Riccardo \"Ace\" H.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/13ace37/express-fastdl/issues"
+  },
+  "homepage": "https://github.com/13ace37/express-fastdl#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }, 
+  "devDependencies": {
+    "eslint": "latest"
+  }
+}
