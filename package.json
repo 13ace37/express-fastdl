@@ -18,8 +18,9 @@
   "homepage": "https://github.com/13ace37/express-fastdl#readme",
   "dependencies": {
     "express": "^4.17.1"
-  }, 
+  },
   "devDependencies": {
-    "eslint": "latest"
+    "eslint": "latest",
+    "pkg": "^4.4.8"
   }
 }
