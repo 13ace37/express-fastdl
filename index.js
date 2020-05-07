@@ -17,7 +17,6 @@ class fastDL {
 		this.app.listen(this.port);
 		console.log(`[LOG] FastDL running on port '${this.port}'`);
 
-
 		this.app.get("/dl", (req, res) => {
 
 			log(req);
@@ -37,7 +36,7 @@ class fastDL {
 }
 
 function log(req) {
-    console.log(`[REQUEST] ${req.connection.remoteAddress} - ${JSON.stringify(req.query, false)}`);
+	console.log(`[REQUEST] ${req.connection.remoteAddress} - ${JSON.stringify(req.query, false)}`);
 }
 
-let dl = new fastDL(Number (process.argv.slice(2)[0]) || false, process.argv.slice(2)[1] || false);
+new fastDL(Number (process.argv.slice(2)[0]) || false, process.argv.slice(2)[1] || false);
