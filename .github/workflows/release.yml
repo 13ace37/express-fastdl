@@ -1,6 +1,9 @@
 name: Release
 
-on: push
+on: 
+  push:
+    tags:
+    - '*'
 
 jobs:
    create-release:
@@ -17,12 +20,11 @@ jobs:
           node-version: 12
 
       - name: Install Node.js dependencies
-        run: npm i pkg -g
+        run: npm i && npm i pkg -g
+
 
       - name: Build executables
-        run: |
-          cp index.js fastdl.js
-          pkg fastdl.js
+        run: cp index.js fastdl.js && pkg fastdl.js
 
       - name: Create release
         uses: ncipollo/release-action@v1
