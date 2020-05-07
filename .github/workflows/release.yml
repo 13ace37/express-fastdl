@@ -24,7 +24,7 @@ jobs:
 
 
       - name: Build executables
-        run: cp index.js fastdl.js && pkg fastdl.js
+        run: cp index.js fastdl.js && pkg fastdl.js && rm fastdl.js
 
       - name: Create release
         uses: ncipollo/release-action@v1
