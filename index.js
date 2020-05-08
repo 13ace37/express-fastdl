@@ -18,25 +18,35 @@ class fastDL {
 		console.log(`[LOG] FastDL running on port '${this.port}'`);
 
 		this.app.get("/dl", (req, res) => {
-
+			
 			log(req);
+
+			if (!req.headers["user-agent"].startsWith("Half-Life")) {
+				console.log("[LOG] Ignored non hl game request!");
+				return res.sendStatus(400);
+			}
+
 			let file = join(String(this.path), String(req.query.file));
 			if (fs.existsSync(file)) {
 				console.log(`[LOG] File '${file}' found! Sending file to client.`);
-				res.download(file);
+				return res.download(file);
 			} 
 			else {
 				console.log(`[LOG] File '${file}' not found!`);
-				res.status(404).send("file not found!");
+				return res.sendStatus(404);
 			}
 		});
+
+		this.app.use(function(req, res){
+       		res.sendStatus(404);
+   		});
 
 	}
 
 }
 
 function log(req) {
-	console.log(`[REQUEST] ${req.connection.remoteAddress} - ${JSON.stringify(req.query, false)}`);
+	console.log(`[REQUEST] ${req.connection.remoteAddress} on ${req.headers.host} - ${JSON.stringify(req.query, false)}`);
 }
 
 new fastDL(Number (process.argv.slice(2)[0]) || false, process.argv.slice(2)[1] || false);
