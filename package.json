@@ -1,6 +1,6 @@
 {
   "name": "express-fastdl",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Source FastDL hosted with expressjs",
   "main": "index.js",
   "private": true,
