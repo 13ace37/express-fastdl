@@ -38,8 +38,8 @@ class fastDL {
 		});
 
 		this.app.use(function(req, res){
-       		res.sendStatus(404);
-   		});
+			res.sendStatus(404);
+		});
 
 	}
 
