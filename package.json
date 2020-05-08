@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "A Source FastDL hosted with expressjs",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "node index.js"
   },
