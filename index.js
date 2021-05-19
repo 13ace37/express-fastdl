@@ -1,6 +1,7 @@
 
 const fs = require("fs");
 const { join } = require('path');
+const { Readable } = require("stream");
 
 class fastDL {
 
@@ -20,12 +21,21 @@ class fastDL {
 		console.log(`[LOG] FastDL running on port '${this.port}'`);
 		if (debug) console.log("[DEBUG] Debug mode enabled!");
 
+		const DummyStream = new Readable();
+		DummyStream._read = () => {};
+		DummyStream.push(null);
+		DummyStream.push(null);
+
 		this.app.get("/dl", (req, res) => {
 			
 			log(req);
 
 			if (!req.headers["user-agent"].startsWith("Half-Life")) {
 				if (debug) console.log("[LOG] Ignored non hl game request!");
+				if (this.debug == "dummy"){
+					res.attachment(req.query.file.split("/").reverse().shift());
+					return DummyStream.pipe(res);
+				}
 				return res.sendStatus(400);
 			}
 
