@@ -33,6 +33,7 @@ class fastDL {
 			if (!req.headers["user-agent"].startsWith("Half-Life")) {
 				if (debug) console.log("[LOG] Ignored non hl game request!");
 				if (this.debug == "dummy"){
+					if (!req.query.file) return res.sendStatus(404);
 					res.attachment(req.query.file.split("/").reverse().shift());
 					return DummyStream.pipe(res);
 				}
